@@ -1,4 +1,4 @@
-# AccuracyAccuracy & Classification 
+# Accuracy & Classification 
 Accuracy = (# Correct Predictions)/( # Total Predictions) and is the most common metric used to evaluate the performance of classification models, which is predicting the correct label for input data. 
 To use accuracy as a metric for a classification model, the dataset should be balanced, meaning there’s roughly an equal number of data points for each class.
 
