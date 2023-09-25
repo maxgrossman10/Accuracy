@@ -63,7 +63,7 @@ plt.scatter(
 # Set plot labels and title
 plt.xlabel("Age")
 plt.ylabel("Pain Level")
-plt.title("Figure 2: Arthritis Classification Dataset with Clustered Data")
+plt.title(" Arthritis Classification Dataset with Clustered Data")
 
 # Add a legend
 plt.legend()
@@ -133,7 +133,7 @@ plt.scatter(
 
 plt.xlabel("Age")
 plt.ylabel("Pain Level")
-plt.title("Figure 2:Training and Testing Data")
+plt.title("Training and Testing Data")
 plt.legend()
 plt.grid(True)
 
@@ -167,8 +167,8 @@ accuracy = accuracy_score(y_test, y_pred)
 # Print the accuracy score
 print("Accuracy:", accuracy)
 
-# %%
-# Assuming you have already trained your logistic regression model as 'model'
+# %% PRINT THE PREDICTIONS FOR THE 20 TEST OBSERVATIONS
+
 # Make predictions on the testing data
 y_prob = model.predict_proba(X_test)
 
@@ -179,3 +179,43 @@ probabilities_class_1 = y_prob[:, 1]
 # Print the predicted probabilities for class 1
 print("Predicted Probabilities for Class 1 (Arthritis):")
 print(probabilities_class_1)
+
+
+###########################################################################################################
+# %% PRINT PRECISION, SENSITIVITY, F1-SCORE
+
+
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+
+# Calculate accuracy
+accuracy = accuracy_score(y_test, y_pred)
+print("Accuracy:", accuracy)
+
+# Calculate precision
+precision = precision_score(y_test, y_pred)
+print("Precision:", precision)
+
+# Calculate recall (sensitivity)
+recall = recall_score(y_test, y_pred)
+print("Recall (Sensitivity):", recall)
+
+# Calculate F1-score
+f1 = f1_score(y_test, y_pred)
+print("F1-Score:", f1)
+
+
+###########################################################################################################
+# %% WRONGLY PREDICTED TEST POINT
+
+# Make predictions on the testing data
+y_pred = model.predict(X_test)
+
+# Find indices of false negatives (Type 2 errors)
+false_negative_indices = np.where((y_pred == 0) & (y_test == 1))[0]
+
+# Retrieve the actual data points for false negatives
+false_negative_data = X_test.iloc[false_negative_indices]
+
+# Print the values of the false negatives
+print("False Negative Data:")
+print(false_negative_data)
